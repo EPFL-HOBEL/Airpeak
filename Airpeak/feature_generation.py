@@ -1,10 +1,4 @@
-import pandas as pd
 import numpy as np
-from scipy import signal
-from scipy import sparse
-from sklearn.neighbors import LocalOutlierFactor
-from datetime import datetime, timedelta
-
 
 
 """
@@ -41,23 +35,47 @@ Notes
 The function assumes input DataFrame contains 'baseline' column.
 Natural log transformation of negative values results in NaN, which are filled with 0.
 """
-def feature_generation(df, pollutant, timestamp, diff_ma_window = 5, diff_rhl_window = 5):
+
+
+def feature_generation(df, pollutant, timestamp, diff_ma_window=5, diff_rhl_window=5):
     df_new = df.copy()
-    df_new['min_diff'] = df_new[timestamp].diff().dt.total_seconds()/60 #calculate timestamp changes
-    
-    df_new['diff'] = df_new[pollutant]-df_new['baseline'] #feature 1 difference relative to baseline 
-    df_new['diff_ma']=df_new['diff'].rolling(diff_ma_window, min_periods=1, center=True).mean() #moving average 
-    
-    df_new['diff_gd']=df_new['diff_ma'].diff()/df_new['min_diff'] #feature 2 gradient of concentration difference 
-    
-    df_new['diff_gd_ln']=np.log(df_new['diff_ma']).diff()/df_new['min_diff'] #feature 3 concentration difference natural log
-    df_new['diff_gd_ln'].fillna(value=0, inplace=True) #if concentration lower than baseline, log(negative) generates NA
-    
-    df_new['diff_gd_sign']= (df_new['diff_gd'] > 0).astype(int) #feature 4 positive/negative sign 
-    
-    df_new['diff_gd_abs']=abs(df_new['diff_gd']) #feature 5 absolute value of the gradient
-    
-    df_new['diff_rhl']= (df_new['diff']-df_new['diff'].rolling(diff_rhl_window,min_periods=1,center=True).min())/(df_new['diff'].rolling(diff_rhl_window,min_periods=1,center=True).max()-df_new['diff'].rolling(diff_rhl_window,min_periods=1,center=True).min()) 
-    #feature 6 relative high-low
-    
+    df_new["min_diff"] = (
+        df_new[timestamp].diff().dt.total_seconds() / 60
+    )  # calculate timestamp changes
+
+    df_new["diff"] = (
+        df_new[pollutant] - df_new["baseline"]
+    )  # feature 1 difference relative to baseline
+    df_new["diff_ma"] = (
+        df_new["diff"].rolling(diff_ma_window, min_periods=1, center=True).mean()
+    )  # moving average
+
+    df_new["diff_gd"] = (
+        df_new["diff_ma"].diff() / df_new["min_diff"]
+    )  # feature 2 gradient of concentration difference
+
+    df_new["diff_gd_ln"] = (
+        np.log(df_new["diff_ma"]).diff() / df_new["min_diff"]
+    )  # feature 3 concentration difference natural log
+    df_new["diff_gd_ln"].fillna(
+        value=0, inplace=True
+    )  # if concentration lower than baseline, log(negative) generates NA
+
+    df_new["diff_gd_sign"] = (df_new["diff_gd"] > 0).astype(
+        int
+    )  # feature 4 positive/negative sign
+
+    df_new["diff_gd_abs"] = abs(
+        df_new["diff_gd"]
+    )  # feature 5 absolute value of the gradient
+
+    df_new["diff_rhl"] = (
+        df_new["diff"]
+        - df_new["diff"].rolling(diff_rhl_window, min_periods=1, center=True).min()
+    ) / (
+        df_new["diff"].rolling(diff_rhl_window, min_periods=1, center=True).max()
+        - df_new["diff"].rolling(diff_rhl_window, min_periods=1, center=True).min()
+    )
+    # feature 6 relative high-low
+
     return df_new

@@ -1,4 +1,4 @@
-from scipy import signal 
+from scipy import signal
 
 
 """
@@ -22,15 +22,18 @@ pandas.DataFrame
 
 Notes
 -----
-Uses scipy.signal.savgol_filter for smoothing, which fits a polynomial of order 
+Uses scipy.signal.savgol_filter for smoothing, which fits a polynomial of order
 'smoothing_order' to windows of size 'smoothing_window'.
 
 Example
 -------
->>> smoothed_df = smoothing(df, 'CO2', 51, 3)
+>>> smoothed_df = smoothing(df, "CO2", 51, 3)
 """
+
+
 def smoothing(df, pollutant, smoothing_window, smoothing_order):
     df_new = df.copy()
-    df_new[pollutant] = signal.savgol_filter(df_new[pollutant], smoothing_window, smoothing_order)
+    df_new[pollutant] = signal.savgol_filter(
+        df_new[pollutant], smoothing_window, smoothing_order
+    )
     return df_new
-
