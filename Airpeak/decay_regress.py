@@ -5,54 +5,52 @@ import warnings
 
 warnings.filterwarnings("ignore")
 
-"""
-Performs linear regression analysis on decay periods in time series data.
-
-This function analyzes identified decay periods in environmental data, calculating decay rates
-and associated statistics through linear regression of log-transformed concentrations.
-
-Parameters
-----------
-df_date : pandas.DataFrame
-    DataFrame containing the time series data with decay periods identified
-pollutant : str
-    Name of the column containing pollutant concentrations
-timestamp : str
-    Name of the column containing timestamp data
-portion : list of float, optional
-    Two elements list specifying the start and end portions of each decay period to use
-    [start_fraction, end_fraction], default [0,1] uses entire periods
-
-Returns
--------
-pandas.DataFrame
-    DataFrame containing regression results with columns:
-    - pollutant: name of analyzed pollutant
-    - time: midpoint time of decay period
-    - decay_start: start time of decay period
-    - decay_end: end time of decay period
-    - decay_rate: calculated decay rate coefficient
-    - r2: R-squared value of regression
-    - ste: standard error of regression
-    - num_of_point: number of points in regression
-    - base_value: baseline concentration at start
-    - median_ele: median concentration above baseline
-    - max_diff: maximum concentration difference
-    - group: decay period identifier
-    - method: analysis method identifier ('decay')
-
-Notes
------
-- Requires decay periods to be pre-identified in 'decay_group' column
-- Performs log-linear regression on concentration differences from baseline
-- Excludes decay periods with fewer than 3 points
-- Uses natural logarithm for decay rate calculation
-"""
-
 
 def decay_regress(df_date, pollutant, timestamp, portion=[0, 1]):
-    # you may choose to exclude the very begnining and end of decay periods
-    # by default, the whole recognized periods will be used
+    """
+    Performs linear regression analysis on decay periods in time series data.
+
+    This function analyzes identified decay periods in environmental data, calculating decay rates
+    and associated statistics through linear regression of log-transformed concentrations.
+
+    Parameters
+    ----------
+    df_date : pandas.DataFrame
+        DataFrame containing the time series data with decay periods identified
+    pollutant : str
+        Name of the column containing pollutant concentrations
+    timestamp : str
+        Name of the column containing timestamp data
+    portion : list of float, optional
+        Two elements list specifying the start and end portions of each decay period to use
+        [start_fraction, end_fraction], default [0,1] uses entire periods
+
+    Returns
+    -------
+    pandas.DataFrame
+        DataFrame containing regression results with columns:
+        - pollutant: name of analyzed pollutant
+        - time: midpoint time of decay period
+        - decay_start: start time of decay period
+        - decay_end: end time of decay period
+        - decay_rate: calculated decay rate coefficient
+        - r2: R-squared value of regression
+        - ste: standard error of regression
+        - num_of_point: number of points in regression
+        - base_value: baseline concentration at start
+        - median_ele: median concentration above baseline
+        - max_diff: maximum concentration difference
+        - group: decay period identifier
+        - method: analysis method identifier ('decay')
+
+    Notes
+    -----
+    - Requires decay periods to be pre-identified in 'decay_group' column
+    - Performs log-linear regression on concentration differences from baseline
+    - Excludes decay periods with fewer than 3 points
+    - Uses natural logarithm for decay rate calculation
+    """
+
     decay_result = []
     decay_list = [
         i for i in set(df_date["decay_group"]) if i >= 0

@@ -14,6 +14,14 @@ dependencies = [
     "seaborn>=0.13.2",
 ]
 
+[project.optional-dependencies]
+docs = [
+  "sphinx>=7.2",
+  "furo>=2024.1.29",
+  "sphinx-autodoc-typehints",
+  "sphinxcontrib-napoleon", 
+]
+
 [build-system]
 requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"

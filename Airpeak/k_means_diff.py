@@ -3,7 +3,15 @@ from sklearn.cluster import KMeans
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.preprocessing import QuantileTransformer
 
-"""
+
+def k_means_diff(
+    df,
+    timestamp,
+    n_clusters=2,
+    scaler=MinMaxScaler(),
+    transformer=QuantileTransformer(),
+):
+    """
     Performs K-means clustering on concentration gradient data to classify different states in time series.
 
     This function applies K-means clustering to identify different states (baseline, decay, buildup,
@@ -37,16 +45,7 @@ from sklearn.preprocessing import QuantileTransformer
     The function expects the input DataFrame to have 'elevated', 'diff_gd_ln', and 'diff_gd_abs'
     columns. The 'elevated' column should be binary (0/1) indicating elevated periods.
     """
-
-
-def k_means_diff(
-    df,
-    timestamp,
-    n_clusters=2,
-    scaler=MinMaxScaler(),
-    transformer=QuantileTransformer(),
-):
-
+    
     df_new = df.copy()
     df_peak = df_new.loc[df_new["elevated"] == 1]
     X = df_peak[["diff_gd_ln", "diff_gd_abs"]]
