@@ -6,5 +6,3 @@ API Reference
    :undoc-members:
    :show-inheritance:
 
-.. autosummary::
-   :toctree: generated/

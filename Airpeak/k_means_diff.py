@@ -45,7 +45,7 @@ def k_means_diff(
     The function expects the input DataFrame to have 'elevated', 'diff_gd_ln', and 'diff_gd_abs'
     columns. The 'elevated' column should be binary (0/1) indicating elevated periods.
     """
-    
+
     df_new = df.copy()
     df_peak = df_new.loc[df_new["elevated"] == 1]
     X = df_peak[["diff_gd_ln", "diff_gd_abs"]]

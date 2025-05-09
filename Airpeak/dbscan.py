@@ -12,6 +12,7 @@ def dbscan(df, timestamp, eps=0.01, ms=2, transformer=RobustScaler()):
     This function processes time series data by applying DBSCAN clustering to identify groups
     of decay events. The data is first split by date and processed individually to make
     hyperparameter selection more universal.
+    
     Parameters
     ----------
     df : pandas.DataFrame
@@ -25,12 +26,14 @@ def dbscan(df, timestamp, eps=0.01, ms=2, transformer=RobustScaler()):
         The number of samples in a neighborhood for a point to be considered as a core point.
     transformer : sklearn.preprocessing object, optional (default=RobustScaler())
         Scaler to use for data preprocessing before DBSCAN clustering
+    
     Returns
     -------
     pandas.DataFrame
         A DataFrame containing the original data with an additional 'decay_group' column where:
         - -1 represents noise points or non-decay events
         - Other integers represent different decay event clusters
+    
     Notes
     -----
     The function:
@@ -41,6 +44,7 @@ def dbscan(df, timestamp, eps=0.01, ms=2, transformer=RobustScaler()):
     Any errors in processing a specific date are silently ignored (the function continues
     with the next date).
     """
+
     df_new = df.copy()
     df_new["Date"] = df_new[timestamp].dt.date
     date_list = df_new["Date"].unique()

@@ -2,7 +2,6 @@ import numpy as np
 from scipy import sparse
 
 
-
 def baseline_als(y, lam, p, niter=10):
     """
     Asymmetric Least Squares Smoothing for baseline correction.
@@ -55,7 +54,6 @@ def baseline_als(y, lam, p, niter=10):
         w = p * (y > z) + (1 - p) * (y < z)
 
     return z
-
 
 
 def baseline_detection(df, pollutant, base_lambda=1e6, base_p=0.001):

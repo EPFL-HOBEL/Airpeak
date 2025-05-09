@@ -1,5 +1,6 @@
 from scipy import signal
 
+
 def smoothing(df, pollutant, smoothing_window, smoothing_order):
     """
     Apply Savitzky-Golay filter to smooth pollutant data in a DataFrame.

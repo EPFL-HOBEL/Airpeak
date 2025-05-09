@@ -279,21 +279,14 @@ from the final output.</p>
 <dd><p>Apply DBSCAN clustering algorithm to time series data grouped by date.
 This function processes time series data by applying DBSCAN clustering to identify groups
 of decay events. The data is first split by date and processed individually to make
-hyperparameter selection more universal.
-:type df: 
-:param df: Input DataFrame containing time series data with status labels
-:type df: pandas.DataFrame
-:type timestamp: 
-:param timestamp: Name of the timestamp column in the DataFrame
-:type timestamp: str
-:type eps: 
-:param eps: The maximum distance between two samples for one to be considered as in the neighborhood of the other.</p>
-<blockquote>
-<div><p>This is the most important DBSCAN parameter to choose appropriately for your data set and distance function.</p>
-</div></blockquote>
+hyperparameter selection more universal.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>pandas.DataFrame</em>) – Input DataFrame containing time series data with status labels</p></li>
+<li><p><strong>timestamp</strong> (<em>str</em>) – Name of the timestamp column in the DataFrame</p></li>
+<li><p><strong>eps</strong> (<em>float</em><em>, </em><em>optional</em><em> (</em><em>default=0.01</em><em>)</em>) – The maximum distance between two samples for one to be considered as in the neighborhood of the other.
+This is the most important DBSCAN parameter to choose appropriately for your data set and distance function.</p></li>
 <li><p><strong>ms</strong> (<em>int</em><em>, </em><em>optional</em><em> (</em><em>default=2</em><em>)</em>) – The number of samples in a neighborhood for a point to be considered as a core point.</p></li>
 <li><p><strong>transformer</strong> (<em>sklearn.preprocessing object</em><em>, </em><em>optional</em><em> (</em><em>default=RobustScaler</em><em>(</em><em>)</em><em>)</em>) – Scaler to use for data preprocessing before DBSCAN clustering</p></li>
 </ul>

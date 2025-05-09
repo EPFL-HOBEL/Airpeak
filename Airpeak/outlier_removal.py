@@ -1,5 +1,6 @@
 from sklearn.neighbors import LocalOutlierFactor
 
+
 def outlier_removal(df, pollutant, outlier_neighbors):
     """
     Remove outliers from a DataFrame using Local Outlier Factor (LOF) algorithm.

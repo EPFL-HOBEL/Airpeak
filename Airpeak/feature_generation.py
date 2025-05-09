@@ -1,5 +1,6 @@
 import numpy as np
 
+
 def feature_generation(df, pollutant, timestamp, diff_ma_window=5, diff_rhl_window=5):
     """
     Generate additional features from time series data of pollutant measurements.
@@ -35,7 +36,7 @@ def feature_generation(df, pollutant, timestamp, diff_ma_window=5, diff_rhl_wind
     The function assumes input DataFrame contains 'baseline' column.
     Natural log transformation of negative values results in NaN, which are filled with 0.
     """
-    
+
     df_new = df.copy()
     df_new["min_diff"] = (
         df_new[timestamp].diff().dt.total_seconds() / 60
