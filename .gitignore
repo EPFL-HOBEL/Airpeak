@@ -1,5 +1,6 @@
 airpeak.egg-info/
 .mypy_cache/
 .ruff_cache/
+.venv/
 Airpeak/__pycache__/
 Airpeak/airpeak.egg-info/
