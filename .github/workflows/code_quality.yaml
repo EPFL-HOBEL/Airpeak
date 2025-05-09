@@ -1,0 +1,42 @@
+name: Code quality
+on: [push, pull_request, workflow_dispatch]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-python@v4
+        with:
+          python-version: "3.12"
+
+      - name: Ruff
+        if: success() || failure()
+        uses: pre-commit/action@v3.0.0
+        with:
+          extra_args: ruff --all-files
+
+      - name: Black
+        if: success() || failure()
+        uses: pre-commit/action@v3.0.0
+        with:
+          extra_args: black --all-files
+
+      - name: blackdoc
+        if: success() || failure()
+        uses: pre-commit/action@v3.0.0
+        with:
+          extra_args: blackdoc --all-files
+
+      - name: mypy
+        if: success() || failure()
+        uses: pre-commit/action@v3.0.0
+        with:
+          extra_args: mypy --all-files
+
+      - name: codespell
+        if: success() || failure()
+        uses: pre-commit/action@v3.0.0
+        with:
+          extra_args: codespell --all-files
