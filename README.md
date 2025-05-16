@@ -1,5 +1,7 @@
+![GitHub License](https://img.shields.io/github/license/EPFL-HOBEL/Airpeak)
+[![Dev Documentation](https://img.shields.io/badge/docs-dev-blue.svg)](https://epfl-hobel.github.io/Airpeak)
+
 # Airpeak
-//TODO add badges
 A Python package for air quality data processing
 
 ## Installation
