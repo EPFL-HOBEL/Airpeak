@@ -4,7 +4,7 @@ from scipy import sparse
 
 def baseline_als(y, lam, p, niter=10):
     """
-    Asymmetric Least Squares Smoothing for baseline correction.
+    Asymmetric Least Squares Smoothing for baseline detection.
 
     This function implements baseline correction using asymmetric least squares smoothing.
     The algorithm iteratively improves a fit of the baseline by applying weights to points
@@ -58,11 +58,12 @@ def baseline_als(y, lam, p, niter=10):
 
 def baseline_detection(df, pollutant, base_lambda=1e6, base_p=0.001):
     """
-    Detects baseline in pollutant measurement data using Asymmetric Least Squares smoothing.
+    Detects baseline from pollutant concentration data using Asymmetric Least Squares smoothing.
 
     This function processes a DataFrame containing pollutant measurements and calculates
     the baseline signal using the baseline_als algorithm. It adds padding to the beginning
-    and end of the data to improve edge detection.
+    and end of the data to improve edge detection. Knowing the baseline (e.g., outdoor concentration) 
+    is essential for estimating pollutant loss rate using on mass balance models. 
 
     Parameters
     ----------
@@ -71,7 +72,7 @@ def baseline_detection(df, pollutant, base_lambda=1e6, base_p=0.001):
     pollutant : str
         Column name in the DataFrame containing the pollutant measurements
     base_lambda : float, optional
-        Smoothing parameter for baseline_als algorithm (default is 1e6)
+        Smoothing parameter for baseline_als algorithm (default is 1×10⁶)
     base_p : float, optional
         Asymmetry parameter for baseline_als algorithm (default is 0.001)
 
