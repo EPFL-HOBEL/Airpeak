@@ -10,8 +10,8 @@ def dbscan(df, timestamp, eps=0.01, ms=2, transformer=RobustScaler()):
     """
     Apply DBSCAN clustering algorithm to time series data grouped by date.
     This function processes time series data by applying DBSCAN clustering to identify groups
-    of decay events. The data is first split by date and processed individually to make
-    hyperparameter selection more universal.
+    of individual decay events in data labeled as "decay" by the k_means_diff function. 
+    The data is first split by date to make hyperparameter selection more universal.
 
     Parameters
     ----------
