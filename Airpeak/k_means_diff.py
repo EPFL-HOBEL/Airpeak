@@ -14,9 +14,9 @@ def k_means_diff(
     """
     Performs K-means clustering on concentration gradient data to classify different states in time series.
 
-    This function applies K-means clustering to identify different states (baseline, decay, buildup,
-    and optionally plateau) in concentration gradient data. It processes elevated periods in the data
-    and labels them according to their gradient characteristics.
+    This function applies K-means clustering to identify different states (build-up, decay,
+    and optionally plateau) in the data labeled as elevated from the previous step. 
+    It processes elevated periods in the data only and labels them according to their gradient characteristics.
 
     Parameters
     ----------
@@ -25,7 +25,7 @@ def k_means_diff(
     timestamp : str
         Column name for timestamp values
     n_clusters : int, optional (default=2)
-        Number of clusters for K-means (2 for no steady state, 3 for with steady state)
+        Number of clusters for K-means (2 for build-up and decay states, 3 for with plateau state)
     scaler : sklearn.preprocessing object, optional (default=MinMaxScaler())
         Scaler object for data normalization
     transformer : sklearn.preprocessing object, optional (default=QuantileTransformer())
@@ -35,7 +35,7 @@ def k_means_diff(
     -------
     pandas.DataFrame
         DataFrame with added 'status_label' column indicating state classification:
-        - 0: baseline (non-elevated periods)
+        - 0: baseline (non-elevated periods, copied from k_means_ele)
         - 1: decay
         - 2: buildup (for n_clusters=2)
         - 2: plateau, 3: buildup (for n_clusters=3)
@@ -53,7 +53,7 @@ def k_means_diff(
     df_peak["status"] = KMeans(n_clusters=n_clusters, max_iter=100000).fit_predict(
         X_scaled
     )
-    # n_clusters of 2 if no steady state, otherwise 3
+    # n_clusters of 2 if no plateau state, otherwise 3
     label_dic = (
         df_peak.groupby("status").agg({"diff_gd": np.mean}).rank()["diff_gd"].to_dict()
     )  # ranking clusters by concentration gradient
