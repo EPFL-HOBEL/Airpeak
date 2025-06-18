@@ -15,17 +15,17 @@ def feature_generation(df, pollutant, timestamp, diff_ma_window=5, diff_rhl_wind
         Column name for the pollutant measurements
     timestamp : str
         Column name for the timestamp data
-    diff_ma_window : int, optional
+    diff_ma_window : int
         Window size for moving average calculation (default is 5)
-    diff_rhl_window : int, optional
+    diff_rhl_window : int
         Window size for relative high-low calculation (default is 5)
     Returns
     -------
     pandas.DataFrame
         DataFrame with original data and additional features:
-        - min_diff: time difference between measurements in minutes
-        - diff: difference between pollutant and baseline
-        - diff_ma: moving average of the difference
+        - min_diff: time difference between adjacent measurements in minutes
+        - diff: difference between pollutant and baseline concentrations
+        - diff_ma: moving average of the concentration difference
         - diff_gd: gradient of concentration difference
         - diff_gd_ln: natural log of concentration difference gradient
         - diff_gd_sign: binary indicator of positive/negative gradient
@@ -33,8 +33,7 @@ def feature_generation(df, pollutant, timestamp, diff_ma_window=5, diff_rhl_wind
         - diff_rhl: relative high-low metric
     Notes
     -----
-    The function assumes input DataFrame contains 'baseline' column.
-    Natural log transformation of negative values results in NaN, which are filled with 0.
+    The function assumes input DataFrame contains 'baseline' column. 
     """
 
     df_new = df.copy()
@@ -54,11 +53,8 @@ def feature_generation(df, pollutant, timestamp, diff_ma_window=5, diff_rhl_wind
     )  # feature 2 gradient of concentration difference
 
     df_new["diff_gd_ln"] = (
-        np.log(df_new["diff_ma"]).diff() / df_new["min_diff"]
+        np.log(abs(df_new["diff_gd"]))
     )  # feature 3 concentration difference natural log
-    df_new["diff_gd_ln"].fillna(
-        value=0, inplace=True
-    )  # if concentration lower than baseline, log(negative) generates NA
 
     df_new["diff_gd_sign"] = (df_new["diff_gd"] > 0).astype(
         int
