@@ -34,6 +34,12 @@ def feature_generation(df, pollutant, timestamp, diff_ma_window=5, diff_rhl_wind
     Notes
     -----
     The function assumes input DataFrame contains 'baseline' column. 
+    
+    Ref
+    -----
+    Anghinoni, L.; Zhao, L.; Ji, D.; Pan, H. Time series trend detection and forecasting 
+    using complex network topology analysis. Neural Networks 2019, 117, 295– 306,  
+    DOI: 10.1016/J.NEUNET.2019.05.018
     """
 
     df_new = df.copy()
