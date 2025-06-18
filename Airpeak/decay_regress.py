@@ -8,10 +8,11 @@ warnings.filterwarnings("ignore")
 
 def decay_regress(df_date, pollutant, timestamp, portion=[0, 1]):
     """
-    Performs linear regression analysis on decay periods in time series data.
+    Performs linear regression analysis on individual decay periods in time series data.
 
-    This function analyzes identified decay periods in environmental data, calculating decay rates
-    and associated statistics through linear regression of log-transformed concentrations.
+    This function analyzes identified individual decay periods in pollutant concentration data, 
+    calculating decay rates and associated statistics through linear regression of 
+    log-transformed concentrations. The analysis is based on mass balance. 
 
     Parameters
     ----------
@@ -30,7 +31,7 @@ def decay_regress(df_date, pollutant, timestamp, portion=[0, 1]):
     pandas.DataFrame
         DataFrame containing regression results with columns:
         - pollutant: name of analyzed pollutant
-        - time: midpoint time of decay period
+        - time: midpoint timestamp of decay period
         - decay_start: start time of decay period
         - decay_end: end time of decay period
         - decay_rate: calculated decay rate coefficient
@@ -38,8 +39,8 @@ def decay_regress(df_date, pollutant, timestamp, portion=[0, 1]):
         - ste: standard error of regression
         - num_of_point: number of points in regression
         - base_value: baseline concentration at start
-        - median_ele: median concentration above baseline
-        - max_diff: maximum concentration difference
+        - median_ele: median concentration above baseline of decay period
+        - max_diff: maximum concentration difference of decay period
         - group: decay period identifier
         - method: analysis method identifier ('decay')
 
