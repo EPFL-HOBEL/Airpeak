@@ -30,7 +30,7 @@ def feature_generation(df, pollutant, timestamp, diff_ma_window=5, diff_rhl_wind
         - diff_gd_ln: natural log of concentration difference gradient
         - diff_gd_sign: binary indicator of positive/negative gradient
         - diff_gd_abs: absolute value of the gradient
-        - diff_rhl: relative high-low metric
+        - diff_rhl: relative high-low metric (see Ref section)
     Notes
     -----
     The function assumes input DataFrame contains 'baseline' column. 
