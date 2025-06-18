@@ -5,7 +5,7 @@ from sklearn.preprocessing import QuantileTransformer  # for data normalization
 
 def k_means_ele(df, scaler=MinMaxScaler(), transformer=QuantileTransformer()):
     """
-    Performs K-means clustering on concentration data to identify elevated measurements.
+    Performs K-means clustering on concentration data to identify significant concentration elevations.
 
     This function applies K-means clustering algorithm with 2 clusters on the provided dataframe
     using 'diff_ma' (moving average difference) and 'diff_gd_abs' (absolute gradient difference)
@@ -25,7 +25,8 @@ def k_means_ele(df, scaler=MinMaxScaler(), transformer=QuantileTransformer()):
     pandas.DataFrame
         A copy of input dataframe with an additional boolean column 'elevated' indicating
         cluster membership. True (1) indicates elevated measurements, False (0) indicates
-        normal measurements.
+        normal measurements. Elevated measurements will be further differentiated into 
+        build-up, plateau, and decay events. 
 
     Notes
     -----
