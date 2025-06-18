@@ -25,6 +25,7 @@ def outlier_removal(df, pollutant, outlier_neighbors):
 
     Notes
     -----
+    This is an optional step. Consider apply it if the raw data contains obvious outliers.
     The function uses both the temporal index and pollutant values to identify outliers.
     Points identified as outliers (labeled as -1 by LOF) are removed from the dataset.
     """
@@ -34,7 +35,7 @@ def outlier_removal(df, pollutant, outlier_neighbors):
     )  # window size for checking outliers
     df_new["index"] = (
         df_new.index
-    )  # index used to consider adjacent data, usually works, could be cleaner
+    )  # generating an "index" column based on the index of the dataframe
     df_new["non_outlier"] = lof.fit_predict(df_new[["index", pollutant]])
     df_new = df_new[df_new["non_outlier"] == 1]
     df_new.drop(columns=["index", "non_outlier"], inplace=True)
