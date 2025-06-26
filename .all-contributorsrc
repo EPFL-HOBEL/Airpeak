@@ -1,0 +1,27 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "commitType": "docs",
+  "commitConvention": "angular",
+  "contributors": [
+    {
+      "login": "Botato12",
+      "name": "Bowen Du",
+      "avatar_url": "https://avatars.githubusercontent.com/u/46970733?v=4",
+      "profile": "https://github.com/Botato12",
+      "contributions": [
+        "code",
+        "data"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "skipCi": true,
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "projectName": "Airpeak",
+  "projectOwner": "EPFL-HOBEL"
+}
