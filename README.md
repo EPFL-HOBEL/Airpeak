@@ -48,6 +48,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   <tbody>
     <tr>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/Botato12"><img src="https://avatars.githubusercontent.com/u/46970733?v=4?s=100" width="100px;" alt="Bowen Du"/><br /><sub><b>Bowen Du</b></sub></a><br /><a href="https://github.com/EPFL-HOBEL/Airpeak/commits?author=Botato12" title="Code">💻</a> <a href="#data-Botato12" title="Data">🔣</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/QuentinEschmann"><img src="https://avatars.githubusercontent.com/u/86717822?v=4?s=100" width="100px;" alt="Quentin Eschmann"/><br /><sub><b>Quentin Eschmann</b></sub></a><br /><a href="https://github.com/EPFL-HOBEL/Airpeak/commits?author=QuentinEschmann" title="Code">💻</a> <a href="https://github.com/EPFL-HOBEL/Airpeak/commits?author=QuentinEschmann" title="Documentation">📖</a></td>
     </tr>
   </tbody>
 </table>
