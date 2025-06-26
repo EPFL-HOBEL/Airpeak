@@ -9,8 +9,8 @@ authors:
   orcid: "https://orcid.org/0000-0001-5904-169X"
 title: "Airpeak: A Python package for recognizing build-up and decay events from pollutant concentration data and estimating pollutant loss rates."
 version: 0.1.0
-doi:
-date-released: 2025-01-01
+doi: 10.5281/zenodo.15745122
+date-released: 2025-06-26
 url: "https://github.com/EPFL-HOBEL/Airpeak"
 references:
   - type: article
