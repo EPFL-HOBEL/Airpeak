@@ -25,8 +25,8 @@ def k_means_ele(df, scaler=MinMaxScaler(), transformer=QuantileTransformer()):
     pandas.DataFrame
         A copy of input dataframe with an additional boolean column 'elevated' indicating
         cluster membership. True (1) indicates elevated measurements, False (0) indicates
-        normal measurements. Elevated measurements will be further differentiated into 
-        build-up, plateau, and decay events. 
+        normal measurements. Elevated measurements will be further differentiated into
+        build-up, plateau, and decay events.
 
     Notes
     -----

@@ -62,8 +62,8 @@ def baseline_detection(df, pollutant, base_lambda=1e6, base_p=0.001):
 
     This function processes a DataFrame containing pollutant measurements and calculates
     the baseline signal using the baseline_als algorithm. It adds padding to the beginning
-    and end of the data to improve edge detection. Knowing the baseline (e.g., outdoor concentration) 
-    is essential for estimating pollutant loss rate using on mass balance models. 
+    and end of the data to improve edge detection. Knowing the baseline (e.g., outdoor concentration)
+    is essential for estimating pollutant loss rate using on mass balance models.
 
     Parameters
     ----------

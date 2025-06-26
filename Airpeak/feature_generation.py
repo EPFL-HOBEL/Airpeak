@@ -33,12 +33,12 @@ def feature_generation(df, pollutant, timestamp, diff_ma_window=5, diff_rhl_wind
         - diff_rhl: relative high-low metric (see Ref section)
     Notes
     -----
-    The function assumes input DataFrame contains 'baseline' column. 
-    
+    The function assumes input DataFrame contains 'baseline' column.
+
     Ref
     -----
-    Anghinoni, L.; Zhao, L.; Ji, D.; Pan, H. Time series trend detection and forecasting 
-    using complex network topology analysis. Neural Networks 2019, 117, 295– 306,  
+    Anghinoni, L.; Zhao, L.; Ji, D.; Pan, H. Time series trend detection and forecasting
+    using complex network topology analysis. Neural Networks 2019, 117, 295– 306,
     DOI: 10.1016/J.NEUNET.2019.05.018
     """
 
@@ -58,8 +58,8 @@ def feature_generation(df, pollutant, timestamp, diff_ma_window=5, diff_rhl_wind
         df_new["diff_ma"].diff() / df_new["min_diff"]
     )  # feature 2 gradient of concentration difference
 
-    df_new["diff_gd_ln"] = (
-        np.log(abs(df_new["diff_gd"]))
+    df_new["diff_gd_ln"] = np.log(
+        abs(df_new["diff_gd"])
     )  # feature 3 concentration difference natural log
 
     df_new["diff_gd_sign"] = (df_new["diff_gd"] > 0).astype(

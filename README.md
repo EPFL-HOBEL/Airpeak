@@ -2,7 +2,7 @@
 [![Dev Documentation](https://img.shields.io/badge/docs-dev-blue.svg)](https://epfl-hobel.github.io/Airpeak)
 
 # Airpeak
-A Python package for recognizing build-up and decay events from pollutant concentration data and estimating pollutant loss rates. 
+A Python package for recognizing build-up and decay events from pollutant concentration data and estimating pollutant loss rates.
 
 ## Installation
 

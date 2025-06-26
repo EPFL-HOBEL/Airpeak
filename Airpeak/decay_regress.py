@@ -10,9 +10,9 @@ def decay_regress(df_date, pollutant, timestamp, portion=[0, 1]):
     """
     Performs linear regression analysis on individual decay periods in time series data.
 
-    This function analyzes identified individual decay periods in pollutant concentration data, 
-    calculating decay rates and associated statistics through linear regression of 
-    log-transformed concentrations. The analysis is based on mass balance. 
+    This function analyzes identified individual decay periods in pollutant concentration data,
+    calculating decay rates and associated statistics through linear regression of
+    log-transformed concentrations. The analysis is based on mass balance.
 
     Parameters
     ----------

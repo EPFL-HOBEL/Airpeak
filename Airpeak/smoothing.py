@@ -23,7 +23,7 @@ def smoothing(df, pollutant, smoothing_window, smoothing_order):
 
     Notes
     -----
-    This step is optional. Consider applying it if the raw data is noisy. 
+    This step is optional. Consider applying it if the raw data is noisy.
     Uses scipy.signal.savgol_filter for smoothing, which fits a polynomial of order
     'smoothing_order' to windows of size 'smoothing_window'.
 

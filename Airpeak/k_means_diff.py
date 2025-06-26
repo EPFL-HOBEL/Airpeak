@@ -15,7 +15,7 @@ def k_means_diff(
     Performs K-means clustering on concentration gradient data to classify different states in time series.
 
     This function applies K-means clustering to identify different states (build-up, decay,
-    and optionally plateau) in the data labeled as elevated from the previous step. 
+    and optionally plateau) in the data labeled as elevated from the previous step.
     It processes elevated periods in the data only and labels them according to their gradient characteristics.
 
     Parameters
