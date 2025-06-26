@@ -3,9 +3,51 @@ message: "If you use this software, please cite it as below."
 authors:
 - family-names: "Du"
   given-names: "Bowen"
-  orcid: "https://orcid.org/0000-0000-0000-0000"
-title: "My python package"
+  orcid: "https://orcid.org/0000-0001-5561-4390"
+- family-names: "Siegel"
+  given-names: "Jeffrey A."
+  orcid: "https://orcid.org/0000-0001-5904-169X"
+title: "Airpeak: A Python package for recognizing build-up and decay events from pollutant concentration data and estimating pollutant loss rates."
 version: 0.1.0
-doi:
+doi: 
 date-released: 2025-01-01
 url: "https://github.com/EPFL-HOBEL/Airpeak"
+references:
+  - type: article
+    authors:
+      - family-names: "Du"
+        given-names: "Bowen"
+      - family-names: "Siegel"
+        given-names: "Jeffrey A."
+    title: "Estimating Indoor Pollutant Loss Using Mass Balances and Unsupervised Clustering to Recognize Decays"
+    journal: "Environmental Science & Technology"
+    year: 2023
+    volume: 57
+    issue: 27
+    start: 10030
+    end: 10038
+    doi: "10.1021/acs.est.3c00756"
+  - type: article
+    authors:
+      - family-names: "Du"
+        given-names: "Bowen"
+      - family-names: "Reda"
+        given-names: "Ibrahim"
+      - family-names: "Licinda"
+        given-names: "Dusan"
+      - family-names: "Kapsis"
+        given-names: "Costa"
+      - family-names: "Qi"
+        given-names: "Dahai"
+      - family-names: "Candanedo"
+        given-names: "José A."
+      - family-names: "Li"
+        given-names: "Tianyuan"
+    title: "Estimating Air Change Rate in Mechanically Ventilated Classrooms Using a Single CO2 Sensor and Automated Data Segmentation"
+    journal: "Environmental Science & Technology"
+    year: 2024
+    volume: 58
+    issue: 42
+    start: 18788
+    end: 18799
+    doi: "10.1021/acs.est.4c02797"
