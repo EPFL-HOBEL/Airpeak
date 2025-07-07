@@ -23,23 +23,18 @@ def feature_generation(df, pollutant, timestamp, diff_ma_window=5, diff_rhl_wind
     -------
     pandas.DataFrame
         DataFrame with original data and additional features:
-        - min_diff: time difference between adjacent measurements in minutes
-        - diff: difference between pollutant and baseline concentrations
-        - diff_ma: moving average of the concentration difference
+        - min_diff: time difference between measurements in minutes
+        - diff: difference between pollutant and baseline
+        - diff_ma: moving average of the difference
         - diff_gd: gradient of concentration difference
         - diff_gd_ln: natural log of concentration difference gradient
         - diff_gd_sign: binary indicator of positive/negative gradient
         - diff_gd_abs: absolute value of the gradient
-        - diff_rhl: relative high-low metric (see Ref section)
+        - diff_rhl: relative high-low metric
     Notes
     -----
     The function assumes input DataFrame contains 'baseline' column.
     Natural log transformation of negative values results in NaN, which are filled with 0.
-    Ref
-    -----
-    Anghinoni, L.; Zhao, L.; Ji, D.; Pan, H. Time series trend detection and forecasting
-    using complex network topology analysis. Neural Networks 2019, 117, 295– 306,
-    DOI: 10.1016/J.NEUNET.2019.05.018
     """
 
     df_new = df.copy()
