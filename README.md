@@ -36,6 +36,10 @@ Or follow these steps and build them locally :
     ```
 
 3. Open [docs/build/html/index.html](docs/build/html/index.html) with your favorite browser.
+   
+## Reference
+Du, B., & Siegel, J. A. (2023). Estimating indoor pollutant loss using mass balances and unsupervised clustering to recognize decays. Environmental Science & Technology, 57(27), 10030-10038. https://doi.org/10.1021/acs.est.3c00756
+Du, B., Reda, I., Licina, D., Kapsis, C., Qi, D., Candanedo, J. A., & Li, T. (2024). Estimating Air Change Rate in Mechanically Ventilated Classrooms Using a Single CO2 Sensor and Automated Data Segmentation. Environmental science & technology, 58(42), 18788-18799. https://doi.org/10.1021/acs.est.4c02797
 
 ## Contributors ✨
 
