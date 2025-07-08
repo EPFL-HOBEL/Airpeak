@@ -15,9 +15,9 @@ def feature_generation(df, pollutant, timestamp, diff_ma_window=5, diff_rhl_wind
         Column name for the pollutant measurements
     timestamp : str
         Column name for the timestamp data
-    diff_ma_window : int
+    diff_ma_window : int, optional
         Window size for moving average calculation (default is 5)
-    diff_rhl_window : int
+    diff_rhl_window : int, optional
         Window size for relative high-low calculation (default is 5)
     Returns
     -------
@@ -34,7 +34,7 @@ def feature_generation(df, pollutant, timestamp, diff_ma_window=5, diff_rhl_wind
     Notes
     -----
     The function assumes input DataFrame contains 'baseline' column.
-
+    Natural log transformation of negative values results in NaN, which are filled with 0.
     Ref
     -----
     Anghinoni, L.; Zhao, L.; Ji, D.; Pan, H. Time series trend detection and forecasting
@@ -58,9 +58,12 @@ def feature_generation(df, pollutant, timestamp, diff_ma_window=5, diff_rhl_wind
         df_new["diff_ma"].diff() / df_new["min_diff"]
     )  # feature 2 gradient of concentration difference
 
-    df_new["diff_gd_ln"] = np.log(
-        abs(df_new["diff_gd"])
+    df_new["diff_gd_ln"] = (
+        np.log(df_new["diff_ma"]).diff() / df_new["min_diff"]
     )  # feature 3 concentration difference natural log
+    df_new["diff_gd_ln"].fillna(
+        value=0, inplace=True
+    )  # if concentration lower than baseline, log(negative) generates NA
 
     df_new["diff_gd_sign"] = (df_new["diff_gd"] > 0).astype(
         int

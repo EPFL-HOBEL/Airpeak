@@ -47,7 +47,7 @@ def k_means_diff(
     """
 
     df_new = df.copy()
-    df_peak = df_new.loc[df_new["elevated"] == 1]
+    df_peak = df_new.loc[df_new["elevated"] == 1].copy()
     X = df_peak[["diff_gd_ln", "diff_gd_abs"]]
     X_scaled = scaler.fit_transform(transformer.fit_transform(X))
     df_peak["status"] = KMeans(n_clusters=n_clusters, max_iter=100000).fit_predict(
@@ -55,12 +55,12 @@ def k_means_diff(
     )
     # n_clusters of 2 if no plateau state, otherwise 3
     label_dic = (
-        df_peak.groupby("status").agg({"diff_gd": np.mean}).rank()["diff_gd"].to_dict()
+        df_peak.groupby("status").agg({"diff_gd": 'mean'}).rank()["diff_gd"].to_dict()
     )  # ranking clusters by concentration gradient
     df_peak["status_label"] = df_peak["status"].map(label_dic)
     # 0-baseline, 1-decay, 2-buildup | 0-baseline, 1-decay, 2-pleateau, 3-buildup
     df_new = df_new.merge(
         df_peak[["status_label", timestamp]], how="left", on=timestamp
     )
-    df_new["status_label"].fillna(0, inplace=True)  # 0 means non-decay
+    df_new["status_label"] = df_new["status_label"].fillna(0)  # 0 means non-decay
     return df_new
