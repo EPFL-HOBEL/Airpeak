@@ -1,8 +1,4 @@
-![GitHub License](https://img.shields.io/github/license/EPFL-HOBEL/Airpeak)
-<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
-<!-- ALL-CONTRIBUTORS-BADGE:END -->
-[![Dev Documentation](https://img.shields.io/badge/docs-dev-blue.svg)](https://epfl-hobel.github.io/Airpeak)
+![GitHub License](https://img.shields.io/github/license/EPFL-HOBEL/Airpeak) <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)<!-- ALL-CONTRIBUTORS-BADGE:END --> [![Dev Documentation](https://img.shields.io/badge/docs-dev-blue.svg)](https://epfl-hobel.github.io/Airpeak) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.15745122.svg)](https://doi.org/10.5281/zenodo.15745122)
 
 # Airpeak
 A Python package for recognizing build-up and decay events from pollutant concentration data and estimating pollutant loss rates.
@@ -36,7 +32,7 @@ Or follow these steps and build them locally :
     ```
 
 3. Open [docs/build/html/index.html](docs/build/html/index.html) with your favorite browser.
-   
+
 ## Reference
 1. Du, B., & Siegel, J. A. (2023). Estimating indoor pollutant loss using mass balances and unsupervised clustering to recognize decays. Environmental Science & Technology, 57(27), 10030-10038. https://doi.org/10.1021/acs.est.3c00756
 

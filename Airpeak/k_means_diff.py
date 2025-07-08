@@ -1,4 +1,3 @@
-import numpy as np
 from sklearn.cluster import KMeans
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.preprocessing import QuantileTransformer
@@ -55,7 +54,7 @@ def k_means_diff(
     )
     # n_clusters of 2 if no plateau state, otherwise 3
     label_dic = (
-        df_peak.groupby("status").agg({"diff_gd": 'mean'}).rank()["diff_gd"].to_dict()
+        df_peak.groupby("status").agg({"diff_gd": "mean"}).rank()["diff_gd"].to_dict()
     )  # ranking clusters by concentration gradient
     df_peak["status_label"] = df_peak["status"].map(label_dic)
     # 0-baseline, 1-decay, 2-buildup | 0-baseline, 1-decay, 2-pleateau, 3-buildup
