@@ -5,6 +5,14 @@ A Python package for recognizing build-up and decay events from pollutant concen
 
 ## Installation
 
+You can simply install this python package by running this in your terminal
+
+```bash
+pip install airpeak
+```
+
+or
+
 1. Clone this repository on your machine :
    ```bash
    git clone git@github.com:EPFL-HOBEL/Airpeak.git
