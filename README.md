@@ -1,4 +1,5 @@
-![GitHub License](https://img.shields.io/github/license/EPFL-HOBEL/Airpeak) <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)<!-- ALL-CONTRIBUTORS-BADGE:END --> [![Dev Documentation](https://img.shields.io/badge/docs-dev-blue.svg)](https://epfl-hobel.github.io/Airpeak) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.15745122.svg)](https://doi.org/10.5281/zenodo.15745122)
+![GitHub License](https://img.shields.io/github/license/EPFL-HOBEL/Airpeak) <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)<!-- ALL-CONTRIBUTORS-BADGE:END --> [![Dev Documentation](https://img.shields.io/badge/docs-dev-blue.svg)](https://epfl-hobel.github.io/Airpeak) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.16259806.svg)](https://doi.org/10.5281/zenodo.16259806)
+
 
 # Airpeak
 A Python package for recognizing build-up and decay events from pollutant concentration data and estimating pollutant loss rates.
