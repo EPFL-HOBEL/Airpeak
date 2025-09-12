@@ -41,13 +41,13 @@ def k_means_diff(
 
     Notes
     -----
-    The function expects the input DataFrame to have 'elevated', 'diff_gd_ln', and 'diff_gd_abs'
+    The function expects the input DataFrame to have 'elevated', 'diff_gd_ln', 'diff_gd_abs', and 'diff_gd_sign'
     columns. The 'elevated' column should be binary (0/1) indicating elevated periods.
     """
 
     df_new = df.copy()
     df_peak = df_new.loc[df_new["elevated"] == 1].copy()
-    X = df_peak[["diff_gd_ln", "diff_gd_abs"]]
+    X = df_peak[["diff_gd_ln", "diff_gd_abs", "diff_gd_sign"]]
     X_scaled = scaler.fit_transform(transformer.fit_transform(X))
     df_peak["status"] = KMeans(n_clusters=n_clusters, max_iter=100000).fit_predict(
         X_scaled
