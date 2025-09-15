@@ -6,7 +6,7 @@ A Python package for recognizing build-up and decay events from pollutant concen
 
 ## Installation
 
-You can simply install this python package by running this in your terminal
+You can simply install this python package by running this in your terminal.
 
 ```bash
 pip install Airpeak
