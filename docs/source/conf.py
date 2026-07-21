@@ -25,6 +25,7 @@ extensions = [
 ]
 
 autosummary_generate = True
+autodoc_member_order = "bysource"
 
 templates_path = ["_templates"]
 exclude_patterns: list[str] = []
